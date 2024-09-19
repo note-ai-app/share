@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    "Roboto", "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: gray;
+}
+
+.App {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 450px;
+  padding-top: 40px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  width: 100%;
+  height: 50px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+}
+
+.quiz-button {
+  background-color: #ff3d00;
+}
+
+.copy-button {
+  background-color: #ff3d00;
+}
+
+.quiz-section {
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li.answer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+li.answer.correct {
+  background-color: #45c249;
+}
+
+li.answer.wrong {
+  background-color: #ffcdd2;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.quiz-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  height: 400px;
+  width: 100%;
+  position: relative;
+
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dots {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: gray;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s, height 0.3s, width 0.3s;
+  vertical-align: middle;
+}
+
+.dot.active {
+  background-color: black;
+  height: 12px;
+  width: 12px;
+}
+
+.congratulations {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.keypoints {
+  margin-top: 0px;
+}
+
+.keypoint-category {
+  margin-bottom: 0px;
+}
+
+.keypoint-category ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.keypoint-category li {
+  margin-bottom: 5px;
+}
+
+.app-logo {
+  width: 42px;
+  height: 42px;
+}
+
+@media only screen and (max-width: 768px) {
+  .App {
+    width: 100vw;
+  }
+}
+
+.try-button-container {
+  text-align: center;
+}
+
+.orange-button {
+  background-color: #ff3d00;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 10px;
+  font-size: 15px;
+  width: 99px;
+  height: 42px;
+  cursor: pointer;
+}
+
+.gray-line {
+  width: 100%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.top-block {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 15px;
+}
+
+.headers {
+  font-weight: 300;
+  font-size: 32px;
+}

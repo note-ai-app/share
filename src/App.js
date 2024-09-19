@@ -5,8 +5,8 @@ import { useSwipeable } from 'react-swipeable';
 import './App.css';
 import logo from './assets/logo.png';
 import close from './assets/close.png';
-import copy from './assets/copy.png';
-import quiz from './assets/quiz.png';
+import loading from './assets/loading.gif';
+import confetti from './assets/confetti.gif';
 
 function App() {
   const { id } = useParams();
@@ -16,6 +16,14 @@ function App() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showQuiz, setShowQuiz] = useState(false);
   const [hideQuestions, setHideQuestions] = useState(false); // State for hiding questions
+
+  const disableScroll = () => {
+    document.body.style.overflow = 'hidden'; // Disable scrolling
+  };
+
+  const enableScroll = () => {
+    document.body.style.overflow = 'auto'; // Enable scrolling
+  };
 
   const mockData = {
     title: `Introductory Calculus: Oxford Mathematics 1st Year Student Lecture`,
@@ -162,37 +170,46 @@ function App() {
     // alert('Summary copied to clipboard!');
   };
 
+  const handleOpenPopup = () => {
+    disableScroll();
+    setShowQuiz(true);
+  };
+
   // Close the quiz popup
   const handleClosePopup = () => {
+    enableScroll();
     setShowQuiz(false);
     setHideQuestions(false); // Reset the state for hiding questions
     setCurrentQuestionIndex(0);
     setSelectedAnswers({});
   };
 
+  
+
   return (
     <div className="App">
       <div className='top-block'>
-        <div className="logo-text">
-          <img src={logo} className="app-logo" alt="logo" />
-          <p style={{ fontSize: "20", fontWeight: "400" }}>Note IA</p>
-        </div>
-        <div class="try-button-container">
-          <button class="orange-button" onClick={() => window.location.href = 'https://apps.apple.com/app/id6642670245'}>Try for free</button>
+        <div className='top-text'>
+          <div className="logo-text">
+            <img src={logo} className="app-logo" alt="logo" />
+            <p style={{ fontSize: "20", fontWeight: "400" }}>Note IA</p>
+          </div>
+          <div class="try-button-container">
+            <button class="orange-button" onClick={() => window.location.href = 'https://apps.apple.com/app/id6642670245'}>Try for free</button>
+          </div>
         </div>
       </div>
-      <div class="gray-line"></div>
 
       {data ? (
         <>
-          <div style={{ padding: '0px 10px' }}>
+          <div className='content-wrapper'>
             <p className='headers'>{data.title}</p>
             <p className='headers' style={{ lineHeight: "0", marginTop: "40px" }}>Abstract summary</p>
             <p style={{ fontSize: "20px", fontWeight: "300", border: "1px solid rgba(0, 0, 0, 0.1)", borderRadius: "12px", padding: "10px" }}>{data.summary}</p>
 
             <div className="button-container">
-              <button className="button" onClick={() => setShowQuiz(true)}><div className="button-text"><img src={quiz} alt="quiz" />Take a quiz</div></button>
-              <button className="button" onClick={handleCopy}><div className="button-text"><img src={copy} alt="quiz" />Copy summary</div></button>
+              <button className="button" onClick={handleOpenPopup}>📝 Take a quiz</button>
+              <button className="button" onClick={handleCopy}>📋 Copy summary</button>
             </div>
 
             <p className='headers' style={{ lineHeight: "0", marginTop: "40px" }}>Key points</p>
@@ -212,8 +229,8 @@ function App() {
         </>
       ) : (
         <>
-          <div style={{ marginTop: '200px' }}>
-            <p>Loading...</p>
+          <div style={{ marginTop: '250px' }}>
+            <img src={loading} alt="loading" />
           </div>
         </>
       )}
@@ -245,7 +262,7 @@ function App() {
                           }`}
                         onClick={() => handleAnswerSelect(answer, index)}
                       >
-                        {answer.answer}
+                        <div className='answer-text'> <span>{answer.answer}</span> <span>{wasAnswered ? isCorrectAnswer ? '✅' : isSelected ? '❌' : '' : ''}</span></div>
                       </li>
                     );
                   })}
@@ -263,7 +280,11 @@ function App() {
                 </div>
               </>
             ) : (
-              <div className="congratulations">Congratulations!</div>
+              <div className="congratulations">
+                <img src={confetti} alt="confetti" style={{ height: '100px', width: '100px' }} />
+                <p className='headers' style={{ lineHeight: '0' }}>Congratulations!</p>
+                <p style={{ fontSize: "20", fontWeight: "300", lineHeight: '0' }}>The quiz is fully complete!</p>
+              </div>
             )}
           </div>
         </div>

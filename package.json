@@ -2,6 +2,7 @@
   "name": "note-ai",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://note-ai-app.github.io/share",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -12,14 +13,13 @@
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "react-swipeable": "^7.0.1",
-    "web-vitals": "^2.1.4",
-    "homepage": "https://note-ai-app.github.io/share"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp build/index.html build/404.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

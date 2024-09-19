@@ -4,17 +4,27 @@ body,
 html {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
-  background-color: white;
 }
 
 body {
+  background-color: white;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
     "Roboto", "Arial", sans-serif;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  min-height: 100vh;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+  }
 }
 
 .App {

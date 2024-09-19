@@ -92,6 +92,7 @@ li.answer.wrong {
   justify-content: center;
   align-items: center;
   padding: 0px 10px;
+  margin-top: 114px;
 }
 
 .quiz-popup {

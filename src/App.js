@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSwipeable } from 'react-swipeable';
 import './App.css';
@@ -8,6 +8,7 @@ import close from './assets/close.png';
 
 function App() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -104,10 +105,10 @@ function App() {
         });
     } else {
       // Use mock data if no ID is provided
-      setData(mockData);
+      navigate('/1');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, navigate]);
 
   // Handle swipe navigation for mobile
   const handlers = useSwipeable({
@@ -172,7 +173,7 @@ function App() {
       <div className='top-block'>
         <div className="logo-text">
           <img src={logo} className="app-logo" alt="logo" />
-          <p style={{fontSize: "20", fontWeight: "400"}}>Note IA</p>
+          <p style={{ fontSize: "20", fontWeight: "400" }}>Note IA</p>
         </div>
         <div class="try-button-container">
           <button class="orange-button">Try for free</button>
@@ -184,7 +185,7 @@ function App() {
         <>
           <div style={{ padding: '0px 10px' }}>
             <p className='headers'>{data.title}</p>
-            <p className='headers' style={{lineHeight: "0", marginTop:"40px"}}>Abstract summary</p>
+            <p className='headers' style={{ lineHeight: "0", marginTop: "40px" }}>Abstract summary</p>
             <p style={{ fontSize: "20px", fontWeight: "300", border: "1px solid rgba(0, 0, 0, 0.1)", borderRadius: "12px", padding: "10px" }}>{data.summary}</p>
 
             <div className="button-container">

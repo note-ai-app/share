@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
-ReactDOM.render(
+const Root = () => (
   <Router>
     <Routes>
+      <Route path="/" element={<App />} />
       <Route path="/:id" element={<App />} />
     </Routes>
-  </Router>,
+  </Router>
+);
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Root />
+  </React.StrictMode>,
   document.getElementById('root')
 );

@@ -184,7 +184,7 @@ function App() {
     setSelectedAnswers({});
   };
 
-  
+
 
   return (
     <div className="App">

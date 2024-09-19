@@ -3,8 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSwipeable } from 'react-swipeable';
 import './App.css';
-import logo from './assets/logo.svg';
+import logo from './assets/logo.png';
 import close from './assets/close.png';
+import copy from './assets/copy.png';
+import quiz from './assets/quiz.png';
 
 function App() {
   const { id } = useParams();
@@ -176,7 +178,7 @@ function App() {
           <p style={{ fontSize: "20", fontWeight: "400" }}>Note IA</p>
         </div>
         <div class="try-button-container">
-          <button class="orange-button">Try for free</button>
+          <button class="orange-button" onClick={() => window.location.href = 'https://apps.apple.com/app/id6642670245'}>Try for free</button>
         </div>
       </div>
       <div class="gray-line"></div>
@@ -189,8 +191,8 @@ function App() {
             <p style={{ fontSize: "20px", fontWeight: "300", border: "1px solid rgba(0, 0, 0, 0.1)", borderRadius: "12px", padding: "10px" }}>{data.summary}</p>
 
             <div className="button-container">
-              <button className="button quiz-button" onClick={() => setShowQuiz(true)}>Take a quiz</button>
-              <button className="button copy-button" onClick={handleCopy}>Copy summary</button>
+              <button className="button" onClick={() => setShowQuiz(true)}><div className="button-text"><img src={quiz} alt="quiz" />Take a quiz</div></button>
+              <button className="button" onClick={handleCopy}><div className="button-text"><img src={copy} alt="quiz" />Copy summary</div></button>
             </div>
 
             <p className='headers' style={{ lineHeight: "0", marginTop: "40px" }}>Key points</p>

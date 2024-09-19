@@ -41,14 +41,8 @@ body {
   border-radius: 12px;
   color: white;
   cursor: pointer;
-}
-
-.quiz-button {
   background-color: #ff3d00;
-}
-
-.copy-button {
-  background-color: #ff3d00;
+  font-size: 15px;
 }
 
 .quiz-section {
@@ -101,7 +95,6 @@ li.answer.wrong {
   height: 400px;
   width: 100%;
   position: relative;
-
 }
 
 .close-button {
@@ -223,4 +216,13 @@ li.answer.wrong {
 .headers {
   font-weight: 300;
   font-size: 32px;
+}
+
+.button-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
 }
